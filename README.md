@@ -141,3 +141,11 @@ Profil pengguna dengan berbagai menu pengaturan
 **State Management**: Menggunakan Navigation Compose built-in state handling
 
 **UI Consistency**: Mengikuti Material Design 3 guidelines
+
+
+
+//Projek ini akan ditingkatkan setelah penilaian Tugas 06-Advanced Navigation Pattern.
+//Anggota kelompok:
+//Muhammad Dzaki Wirayuda | 23523197
+//Ahmad Aiman Zumar Prawirosunoto | 23523112
+//Raditya Pratama | 23523169
