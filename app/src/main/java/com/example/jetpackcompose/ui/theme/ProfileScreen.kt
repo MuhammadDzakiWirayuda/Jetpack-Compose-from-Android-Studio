@@ -24,7 +24,7 @@ fun ProfileScreen() {
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Spacer(modifier = Modifier.height(32.dp))
+        Spacer(modifier = Modifier.height(16.dp))
 
         // Profile Picture
         Surface(
@@ -61,55 +61,58 @@ fun ProfileScreen() {
 
         Spacer(modifier = Modifier.height(32.dp))
 
-        // Profile Options
-        ProfileOption(
-            icon = Icons.Default.ShoppingCart,
-            title = "Pesanan Saya",
-            subtitle = "Lihat riwayat pesanan"
-        )
+        // Profile Options - Hapus "Tentang Aplikasi"
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .weight(1f)
+        ) {
+            ProfileOption(
+                icon = Icons.Default.ShoppingCart,
+                title = "Pesanan Saya",
+                subtitle = "Lihat riwayat pesanan"
+            )
 
-        ProfileOption(
-            icon = Icons.Default.Favorite,
-            title = "Wishlist",
-            subtitle = "Produk favorit saya"
-        )
+            ProfileOption(
+                icon = Icons.Default.Favorite,
+                title = "Wishlist",
+                subtitle = "Produk favorit saya"
+            )
 
-        ProfileOption(
-            icon = Icons.Default.LocationOn,
-            title = "Alamat",
-            subtitle = "Kelola alamat pengiriman"
-        )
+            ProfileOption(
+                icon = Icons.Default.LocationOn,
+                title = "Alamat",
+                subtitle = "Kelola alamat pengiriman"
+            )
 
-        ProfileOption(
-            icon = Icons.Default.Settings,
-            title = "Pengaturan",
-            subtitle = "Preferensi aplikasi"
-        )
+            ProfileOption(
+                icon = Icons.Default.Settings,
+                title = "Pengaturan",
+                subtitle = "Preferensi aplikasi"
+            )
 
-        ProfileOption(
-            icon = Icons.Default.Info,
-            title = "Tentang Aplikasi",
-            subtitle = "Versi 1.0.0"
-        )
+            // "Tentang Aplikasi" dihapus untuk menghemat space
+        }
 
-        Spacer(modifier = Modifier.weight(1f))
-
-        // Logout Button
+        // Logout Button - Pastikan terlihat
         OutlinedButton(
             onClick = { /* Logout action */ },
             modifier = Modifier
                 .fillMaxWidth()
-                .height(48.dp),
+                .height(56.dp),
             colors = ButtonDefaults.outlinedButtonColors(
                 contentColor = MaterialTheme.colorScheme.error
             )
         ) {
             Icon(
                 imageVector = Icons.Default.ExitToApp,
-                contentDescription = null
+                contentDescription = "Logout"
             )
             Spacer(modifier = Modifier.width(8.dp))
-            Text("Keluar")
+            Text(
+                text = "Keluar",
+                style = MaterialTheme.typography.titleMedium
+            )
         }
     }
 }
@@ -125,7 +128,8 @@ fun ProfileOption(
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 4.dp),
-        onClick = { /* Handle click */ }
+        onClick = { /* Handle click */ },
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
         Row(
             modifier = Modifier
@@ -144,7 +148,8 @@ fun ProfileOption(
                     Icon(
                         imageVector = icon,
                         contentDescription = title,
-                        tint = MaterialTheme.colorScheme.primary
+                        tint = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier.size(24.dp)
                     )
                 }
             }
@@ -166,9 +171,10 @@ fun ProfileOption(
                 )
             }
 
+            // Icon arrow - tetap menggunakan yang ada
             Icon(
                 imageVector = Icons.Filled.KeyboardArrowLeft,
-                contentDescription = "Go",
+                contentDescription = "Navigate",
                 tint = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
