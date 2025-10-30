@@ -9,41 +9,37 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.example.productcatalog.model.Product
+import com.example.jetpackcompose.ui.theme.PriceUtils
 
 /**
  * Product Detail Screen - Menampilkan detail produk
  * Screen B (Tujuan): menerima dan menampilkan data dari Products Screen
  */
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProductDetailScreen(
     product: Product,
     onBackClick: () -> Unit
 ) {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-    ) {
-        // Top Bar dengan tombol back
-        TopAppBar(
-            title = { Text("Detail Produk") },
-            navigationIcon = {
-                IconButton(onClick = onBackClick) {
-                    Icon(
-                        imageVector = Icons.Default.ArrowBack,
-                        contentDescription = "Kembali"
-                    )
+    Scaffold(
+        topBar = {
+            CenterAlignedTopAppBar(
+                title = { Text("Detail Produk") },
+                navigationIcon = {
+                    IconButton(onClick = onBackClick) {
+                        Icon(
+                            imageVector = Icons.Default.ArrowBack,
+                            contentDescription = "Kembali"
+                        )
+                    }
                 }
-            },
-            colors = TopAppBarDefaults.topAppBarColors(
-                containerColor = MaterialTheme.colorScheme.primaryContainer
             )
-        )
-
-        // Content
+        }
+    ) { paddingValues ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
+                .padding(paddingValues)
                 .padding(16.dp)
         ) {
             // Product Image Placeholder
@@ -60,7 +56,7 @@ fun ProductDetailScreen(
                     contentAlignment = Alignment.Center
                 ) {
                     Icon(
-                        imageVector = Icons.Default.ShoppingBag,
+                        imageVector = Icons.Default.ShoppingCart,
                         contentDescription = "Product Image",
                         modifier = Modifier.size(100.dp),
                         tint = MaterialTheme.colorScheme.primary
@@ -94,17 +90,18 @@ fun ProductDetailScreen(
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Price
+            // Price - DIPERBAIKI: gunakan icon yang tepat dan parameter yang benar
             Row(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Icon(
-                    imageVector = Icons.Default.AttachMoney,
+                    imageVector = Icons.Default.FavoriteBorder, // Icon yang lebih sesuai untuk harga
                     contentDescription = "Price",
                     tint = MaterialTheme.colorScheme.secondary
                 )
+                Spacer(modifier = Modifier.width(8.dp))
                 Text(
-                    text = formatPrice(product.price),
+                    text = PriceUtils.formatPrice(product.price), // DIPERBAIKI: product.price bukan productDetail.price
                     style = MaterialTheme.typography.headlineSmall,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.secondary
@@ -139,7 +136,7 @@ fun ProductDetailScreen(
 
             // Product Info
             InfoRow(
-                icon = Icons.Default.Tag,
+                icon = Icons.Default.Build,
                 label = "ID Produk",
                 value = "#${product.id}"
             )

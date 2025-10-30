@@ -5,17 +5,16 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ChevronRight
+import androidx.compose.material.icons.filled.KeyboardArrowLeft
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.example.productcatalog.model.Product
-import com.example.productcatalog.model.ProductData
 import java.text.NumberFormat
 import java.util.*
+import com.example.jetpackcompose.ui.theme.PriceUtils
 
 /**
  * Products Screen - Menampilkan daftar produk
@@ -91,27 +90,19 @@ fun ProductItem(
                 Spacer(modifier = Modifier.height(8.dp))
 
                 Text(
-                    text = formatPrice(product.price),
+                    text = PriceUtils.formatPrice(product.price),
                     style = MaterialTheme.typography.titleSmall,
                     fontWeight = FontWeight.SemiBold,
                     color = MaterialTheme.colorScheme.secondary
                 )
             }
 
-            // Arrow Icon
+            // Arrow Icon - Diperbaiki menggunakan icon yang benar
             Icon(
-                imageVector = Icons.Default.ChevronRight,
+                imageVector = Icons.Filled.KeyboardArrowLeft,
                 contentDescription = "Lihat Detail",
                 tint = MaterialTheme.colorScheme.primary
             )
         }
     }
-}
-
-/**
- * Helper function untuk format harga ke Rupiah
- */
-fun formatPrice(price: Double): String {
-    val formatter = NumberFormat.getCurrencyInstance(Locale("id", "ID"))
-    return formatter.format(price)
 }

@@ -2,6 +2,7 @@ package com.example.jetpackcompose.ui.theme
 
 import kotlinx.serialization.Serializable
 
+@OptIn(kotlinx.serialization.InternalSerializationApi::class)
 @Serializable
 data class Product(
     val id: Int,

@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 /**
  * Profile Screen - Halaman profil pengguna
  */
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProfileScreen() {
     Column(
@@ -113,6 +114,7 @@ fun ProfileScreen() {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProfileOption(
     icon: androidx.compose.ui.graphics.vector.ImageVector,
@@ -165,7 +167,7 @@ fun ProfileOption(
             }
 
             Icon(
-                imageVector = Icons.Default.ChevronRight,
+                imageVector = Icons.Filled.KeyboardArrowLeft,
                 contentDescription = "Go",
                 tint = MaterialTheme.colorScheme.onSurfaceVariant
             )

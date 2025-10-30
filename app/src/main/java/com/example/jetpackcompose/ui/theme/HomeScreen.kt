@@ -14,9 +14,8 @@ import androidx.compose.ui.unit.dp
 /**
  * Home Screen - Halaman utama aplikasi
  */
-
 @Composable
-fun HomeScreen() {
+fun HomeScreen(onProductsClick: () -> Unit = {}) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -70,16 +69,26 @@ fun HomeScreen() {
             )
 
             FeatureCard(
-                icon = Icons.Default.LocalShipping,
+                icon = Icons.Default.LocationOn,
                 title = "Gratis Ongkir",
                 description = "Belanja Hemat"
             )
 
             FeatureCard(
-                icon = Icons.Default.VerifiedUser,
+                icon = Icons.Default.Person,
                 title = "Aman",
                 description = "Terpercaya"
             )
+        }
+
+        Spacer(modifier = Modifier.height(32.dp))
+
+        // Browse Products Button
+        Button(
+            onClick = onProductsClick,
+            modifier = Modifier.fillMaxWidth(0.8f)
+        ) {
+            Text("Jelajahi Produk")
         }
     }
 }

@@ -1,3 +1,5 @@
+@file:OptIn(kotlinx.serialization.InternalSerializationApi::class)
+
 package com.example.jetpackcompose.ui.theme
 
 import kotlinx.serialization.Serializable
